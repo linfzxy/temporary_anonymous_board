@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip: MyString
+  counter: 1
+  lowerbounder: 2017-03-17 03:22:06
+  banned: false
+
+two:
+  ip: MyString
+  counter: 1
+  lowerbounder: 2017-03-17 03:22:06
+  banned: false

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nickname: MyString
+  verifyword: MyString
+  ip: MyString
+  activitydate: 2017-03-16 20:47:56
+
+two:
+  nickname: MyString
+  verifyword: MyString
+  ip: MyString
+  activitydate: 2017-03-16 20:47:56

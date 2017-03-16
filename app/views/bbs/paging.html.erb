@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>id</th>
+    <th>title</th>
+    <th>text</th>
+  </tr>
+  <% @messages.each do |messages| %>
+      <tr>
+        <td><%= messages.id %></td>
+        <td><%= messages.content %></td>
+        <td><%= messages.author %></td>
+      </tr>
+  <% end %>
+</table>
