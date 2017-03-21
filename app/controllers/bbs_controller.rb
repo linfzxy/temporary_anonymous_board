@@ -30,7 +30,7 @@ class BbsController < ApplicationController
     nickname=session[:nickname].blank? ? 'Anonymous' : session[:nickname]
     Reply.new_reply message_id,nickname,content,request.remote_ip
     Message.count_inc message_id
-    redirect_to '/bbs/message'+message_id.to_s
+    redirect_to '/bbs/message/'+message_id.to_s
   end
 
   def signin
