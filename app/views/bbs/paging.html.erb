@@ -1,14 +1,72 @@
-<table>
-  <tr>
-    <th>id</th>
-    <th>title</th>
-    <th>text</th>
-  </tr>
-  <% @messages.each do |messages| %>
-      <tr>
-        <td><%= messages.id %></td>
-        <td><%= messages.content %></td>
-        <td><%= messages.author %></td>
-      </tr>
-  <% end %>
-</table>
+<%= render 'comments/head'%>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="row-fluid">
+        <div class="span3">
+        </div>
+
+        <div class="span6">
+          <% @messages.each do |message| %>
+              <div>
+              <br/><hr/>
+               <strong><%= message.id %>, <%= message.author %>:</strong>
+              <p>
+                <%= sanitize message.content %>
+              </p>
+              <span class="badge badge-info pull-right">
+                <span msg-id="<%=message.id %>" onClick="replyinfo(<%=message.id %>)">
+                  <%= message.replycount %>回复
+                </span>
+              </span>
+              <span class="pull-right muted"><a href="/bbs/message/<%=message.id %>" class="muted">发布于：<%= Time.at(message.ctime.to_i).strftime("%Y年%m月%d日 %H:%M") %>&nbsp;&nbsp;&nbsp;</a></span>
+              </div>
+              <div style="width:100%;">
+                <div id="reply-1-<%=message.id %>" hidden="true" style="width:95%;margin:5%">
+                        <span  id="reply-2-<%=message.id %>" loaded="false">loading...</span>
+                        <form class="form-inline" method="post" action="/bbs/<%=message.id %>/reply">
+                          <input name="reply-content" style="width:70%;"/>&nbsp&nbsp;
+                          <button class="btn" type="submit">回复</button>
+                        </form>
+                </div>
+              </div>
+        <% end %>
+        </div>
+        <div class="span3">
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span3">
+        </div>
+        <div class="span6">
+          <br/><hr/>
+          <form class="form-inline" method="post" action="/bbs/new">
+            <fieldset>
+                <textarea class="form-control" rows="10" style="width: 97%;" name="content"></textarea>
+              <p><br/><button class="btn" type="submit">
+                  发帖</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" value="true" name="markdown" /> 使用Markdown语法</p>
+            </fieldset>
+          </form>
+        </div>
+        <div class="span3">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  replyinfo=function(msg){
+    $('#reply-1-'+msg).toggle()
+    if ($('#reply-2-' + msg).attr('loaded')=='false'){
+      $.get('/bbs/' + msg + '/reply', function (data) {
+        $('#reply-2-' + msg).html(data);
+      })
+      $('#reply-2-' + msg).attr('loaded','true')
+    }
+  }
+
+</script>
+
+<%= render 'comments/foot'%>

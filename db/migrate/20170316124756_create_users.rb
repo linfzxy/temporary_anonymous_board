@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :nickname
       t.string :verifyword
       t.string :ip
-      t.time :activitydate
+      t.integer :activitydate
 
       # t.timestamps
     end

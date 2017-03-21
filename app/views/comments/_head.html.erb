@@ -1,0 +1,23 @@
+<% if session[:nickname].blank? %>
+<%= render 'comments/nav-bar-unlogin' %>
+<% else %>
+<%= render 'comments/nav-bar-login' %>
+<% end %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+    </div>
+    <div class="span6">
+      <h3 class="text-center">
+        <br/>
+        万事屋/可匿名讨论版
+      </h3>
+      <span class="muted pull-right">苟利国家生死以，岂因祸福避趋之。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br/>
+      <span class="muted pull-right">-- 林则徐</span>
+    </div>
+    <div class="span3">
+    </div>
+  </div>
+</div>
+

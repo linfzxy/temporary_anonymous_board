@@ -1,5 +1,15 @@
 source 'http://gems.ruby-china.org'
 
+# bootstrap
+gem 'bootstrap-sass', '~> 3.2.0.2'
+gem 'autoprefixer-rails'
+# Use SCSS for stylesheets
+# gem 'sass-rails', '~> 5.0'
+
+# markdown support
+# https://ruby-china.org/topics/474
+gem 'redcarpet'
+gem 'coderay'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -7,8 +17,8 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

@@ -10,27 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316192206) do
+ActiveRecord::Schema.define(version: 20170321001224) do
 
   create_table "iptables", force: :cascade do |t|
     t.string  "ip"
     t.integer "counter"
-    t.time    "lowerbounder"
+    t.integer "lowerbounder"
     t.boolean "banned"
+    t.index ["ip"], name: "index_iptables_on_ip"
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text   "content"
-    t.string "author"
-    t.time   "ctime"
-    t.string "ip"
+    t.text    "content"
+    t.string  "author"
+    t.integer "ctime"
+    t.string  "ip"
+    t.integer "replycount"
+    t.integer "lastreply"
+    t.index ["lastreply"], name: "index_messages_on_lastreply"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.integer  "message"
+    t.string   "author"
+    t.text     "content"
+    t.integer  "ctime"
+    t.string   "ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message"], name: "index_replies_on_message"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "nickname"
-    t.string "verifyword"
-    t.string "ip"
-    t.time   "activitydate"
+    t.string  "nickname"
+    t.string  "verifyword"
+    t.string  "ip"
+    t.integer "activitydate"
+    t.index ["activitydate"], name: "index_users_on_activitydate"
+    t.index ["nickname"], name: "index_users_on_nickname"
   end
 
 end

@@ -1,0 +1,7 @@
+<% @replies.each do |reply| %>
+    <hr/>
+    <strong><%= reply.author %>,<%= Time.at(reply.ctime.to_i).strftime("%Y年%m月%d日 %H:%M") %>:</strong>
+    <p>
+      <%= sanitize reply.content %>
+    </p>
+<% end %>

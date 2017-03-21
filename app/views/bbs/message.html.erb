@@ -1,0 +1,47 @@
+<%= render 'comments/head' %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="row-fluid">
+        <div class="span3">
+        </div>
+
+        <div class="span6">
+              <div>
+                <br/><hr/>
+                <strong><%= @message.id %>, <%= @message.author %>:</strong>
+                <p>
+                  <%= sanitize @message.content %>
+                </p>
+                <span class="pull-right muted" ><a href="/bbs/message/<%=@message.id %>" class="muted">发布于：<%= Time.at(@message.ctime.to_i).strftime("%Y年%m月%d日 %H:%M") %>&nbsp;&nbsp;&nbsp;</a></span>
+              </div>
+              <div style="width:100%;">
+                <div id="reply-1-<%=@message.id %>" style="width:95%;margin:5%">
+                  <%= render template: 'bbs/replies' %>
+                </div>
+              </div>
+        </div>
+        <div class="span3">
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span3">
+        </div>
+        <div class="span6">
+          <br/><hr/>
+          <form class="form-inline" method="post" action="/bbs/<%= @message.id %>/reply">
+            <fieldset>
+              <textarea class="form-control" rows="10" style="width: 97%;" name="reply-content"></textarea>
+              <p><br/><button class="btn" type="submit">
+                回复</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            </fieldset>
+          </form>
+        </div>
+        <div class="span3">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'comments/foot' %>

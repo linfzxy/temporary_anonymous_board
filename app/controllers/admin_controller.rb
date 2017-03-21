@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  http_basic_authenticate_with name:'change_to_your_own',password:'change_to_your_own'
+  http_basic_authenticate_with name:'linfzxy',password:'xl13579'
   def delete_message
     Message.delete(params[:id])
     render plain:'ok'
