@@ -12,42 +12,42 @@
 
 ActiveRecord::Schema.define(version: 20170321001224) do
 
-  create_table "iptables", force: :cascade do |t|
+  create_table "iptables", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "ip"
     t.integer "counter"
     t.integer "lowerbounder"
     t.boolean "banned"
-    t.index ["ip"], name: "index_iptables_on_ip"
+    t.index ["ip"], name: "index_iptables_on_ip", using: :btree
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text    "content"
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text    "content",    limit: 65535
     t.string  "author"
     t.integer "ctime"
     t.string  "ip"
     t.integer "replycount"
     t.integer "lastreply"
-    t.index ["lastreply"], name: "index_messages_on_lastreply"
+    t.index ["lastreply"], name: "index_messages_on_lastreply", using: :btree
   end
 
-  create_table "replies", force: :cascade do |t|
+  create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "message"
     t.string   "author"
-    t.text     "content"
+    t.text     "content",    limit: 65535
     t.integer  "ctime"
     t.string   "ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["message"], name: "index_replies_on_message"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["message"], name: "index_replies_on_message", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "nickname"
     t.string  "verifyword"
     t.string  "ip"
     t.integer "activitydate"
-    t.index ["activitydate"], name: "index_users_on_activitydate"
-    t.index ["nickname"], name: "index_users_on_nickname"
+    t.index ["activitydate"], name: "index_users_on_activitydate", using: :btree
+    t.index ["nickname"], name: "index_users_on_nickname", using: :btree
   end
 
 end

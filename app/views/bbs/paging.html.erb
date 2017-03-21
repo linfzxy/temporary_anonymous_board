@@ -30,7 +30,17 @@
                         </form>
                 </div>
               </div>
-        <% end %>
+          <% end %>
+
+          <br/>          <br/>
+          <div class="pagination pagination-right">
+            <ul>
+              <li><a href="/bbs/pages/<%= (@page-1)>=0 ?(@page-1) : 0 %>">上一页</a></li>
+              <li><a href="#">第<%= @page %>页</a></li>
+              <li><a href="/bbs/pages/<%= @page+1 %>">下一页</a></li>
+            </ul>
+          </div>
+
         </div>
         <div class="span3">
         </div>

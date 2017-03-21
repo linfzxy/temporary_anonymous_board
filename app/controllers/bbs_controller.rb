@@ -8,7 +8,8 @@ class BbsController < ApplicationController
   end
 
   def paging
-    @messages=Message.order(lastreply: :desc).limit(30).offset(params[:page]*30)
+    @messages=Message.order(lastreply: :desc).limit(15).offset(params[:page].to_i*15)
+    @page=params[:page].to_i
   end
 
   def get_reply
