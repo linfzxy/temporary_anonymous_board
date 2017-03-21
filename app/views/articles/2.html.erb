@@ -1,0 +1,31 @@
+<%= render 'comments/head'%>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+    </div>
+    <div class="span6">
+      <h3 class="text-center">
+        Latex语法说明：
+      </h3>
+
+        默认支持Latex表达式,使用时使用<code class="docutils literal"><span class="pre">$$...$$</span></code>或
+        <code class="docutils literal"><span class="pre">\[...\]</span></code>包裹插入Latex公式，使用
+        <code class="docutils literal"><span class="pre">\(...\)</span></code>在当前行内插入Latex公式，示例：</br>
+
+      <div class="highlight-html"><div class="highlight"><pre>
+        When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+        </pre></div>
+      </div>
+        When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+        $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+        <p class="muted">参考资料：<a class="muted" href="http://docs.mathjax.org/en/latest/start.html#tex-and-latex-input">http://docs.mathjax.org/en/latest/start.html#tex-and-latex-input</a></p>
+      </p>
+    </div>
+    <div class="span3">
+    </div>
+  </div>
+</div>
+
+<%= render 'comments/foot'%>

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'bbs/:message_id/reply', to: 'bbs#get_reply'
   post 'bbs/:message_id/reply', to: 'bbs#reply'
 
+  get 'bbs/article/:id', to: 'articles#distribute'
+
+
   get '/bbs/admin/delete_message/:id', to:'admin#delete_message'
   get '/bbs/admin/add_to_ban_list/:ip1/:ip2/:ip3/:ip4', to:'admin#add_to_ban_list'
   get '/bbs/admin/remove_from_ban_list/:ip1/:ip2/:ip3/:ip4', to:'admin#remove_from_ban_list'

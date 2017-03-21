@@ -13,7 +13,7 @@
                 <p>
                   <%= sanitize @message.content %>
                 </p>
-                <span class="pull-right muted" ><a href="/bbs/message/<%=@message.id %>" class="muted">发布于：<%= Time.at(@message.ctime.to_i).strftime("%Y年%m月%d日 %H:%M") %>&nbsp;&nbsp;&nbsp;</a></span>
+                <span class="pull-right muted" >发布于：<a href="/bbs/message/<%=@message.id %>" class="muted"><%= Time.at(@message.ctime.to_i).strftime("%Y年%m月%d日 %H:%M") %>&nbsp;&nbsp;&nbsp;</a></span>
               </div>
               <div style="width:100%;">
                 <div id="reply-1-<%=@message.id %>" style="width:95%;margin:5%">

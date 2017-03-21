@@ -10,7 +10,10 @@ class User < ApplicationRecord
     return false if Iptable.ban? ip,0
     return true if nickname.blank? || nickname=='Anonymous'
     user=User.where(:nickname => nickname).last
-    if user==nil || user.verifyword.blank?
+    if user==nil || user.verifyword.blank? || user.activitydate< Time.now.to_i-2592000
+      if verifyword.blank?
+        return true
+      end
       User.new(:nickname => nickname, :verifyword => verifyword , :ip => ip, :activitydate => Time.now).save
       Iptable.ban? ip,20
       return true
